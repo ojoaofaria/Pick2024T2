@@ -13,4 +13,4 @@ spec:
   storageClassName: giropops 
   selector:
     matchLabels:
-      storage: meu-pv-nfs
+      storage: lento

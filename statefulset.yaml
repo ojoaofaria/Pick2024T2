@@ -18,13 +18,13 @@ spec:
         image: nginx
         ports:
         - containerPort: 80
-          name: http
+          name: web
         volumeMounts:
-        - name: nginx-persistent-storage
+        - name: www
           mountPath: /usr/share/nginx/html
   volumeClaimTemplates: # Como estamos utilizando StatefulSet, precisamos criar um template de volume para cada Pod, entã ao invés de criarmos um volume diretamente, criamos um template que será utilizado para criar um volume para cada Pod
   - metadata:
-      name: nginx-persistent-storage
+      name: www # Nome do volume, assim teremos o volume www-0, www-1 e www-2
     spec:
       accessModes: [ "ReadWriteOnce" ]
       resources:
