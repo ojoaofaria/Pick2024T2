@@ -18,7 +18,7 @@ spec:
         severity: critical
       annotations:
         summary: "Nginx is down"
-        description: "Nginx is down for more than 1 minute"
+        description: "Nginx fora do ar"
     - alert: NginxHighRequestLatency
       expr: rate(nginx_http_request_duration_seconds_sum{job="nginx-exporter"}[5m]) / rate(nginx_http_request_duration_seconds_count{job="nginx-exporter"}[5m]) > 0.5
       for: 1m
