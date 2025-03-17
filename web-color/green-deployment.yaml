@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: web-green
+  name: green
+spec:
+  containers:
+  - image: fabricioveronez/web-color:green
+    name: green
+    ports:
+    - containerPort: 8090

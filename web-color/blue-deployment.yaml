@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: web-blue
+  name: blue
+spec:
+  containers:
+  - image: fabricioveronez/web-color:blue
+    name: blue
+    ports:
+    - containerPort: 8080

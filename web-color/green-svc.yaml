@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: green
+spec:
+  selector:
+    app: web-green
+  ports:
+    - protocol: TCP
+      port: 8090
+      targetPort: 8090
+  type: ClusterIP
