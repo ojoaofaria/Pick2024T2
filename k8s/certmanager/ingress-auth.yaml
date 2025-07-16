@@ -1,0 +1,33 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: giropops-senhas
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    nginx.ingress.kubernetes.io/limit-rps: "3"
+    # Autenticação básica (opcional)
+    # nginx.ingress.kubernetes.io/auth-type: "basic"
+    # nginx.ingress.kubernetes.io/auth-secret: "senha-users"
+    # nginx.ingress.kubernetes.io/auth-realm: "Autenticação necessária"
+    # Configuração de cookies (opcional)
+    # nginx.ingress.kubernetes.io/affinity: "cookie"
+    # nginx.ingress.kubernetes.io/session-cookie-name: "giropops-senhas"
+    # upstream hash by request URI
+    # nginx.ingress.kubernetes.io/upstream-hash-by: "$request_uri"
+    # Canary release (opcional)
+    nginx.ingress.kubernetes.io/canary: "true"
+    nginx.ingress.kubernetes.io/canary-weight: "10"
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: giropops-senhas.io
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: giropops-senhas
+            port:
+              number: 5000

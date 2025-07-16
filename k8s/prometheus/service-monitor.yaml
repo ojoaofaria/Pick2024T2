@@ -1,0 +1,19 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: prometheus-service-monitor
+  labels:
+    app: nginx
+    app.kubernetes.io/name: giropops
+    app.kubernetes.io/instance: k8s
+    app.kubernetes.io/component: prometheus
+    app.kubernetes.io/part-of: kube-giropops
+    app.kubernetes.io/version: "1.0.0"
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  endpoints:
+  - interval: 10s
+    path: /metrics
+    targetPort: 9113
